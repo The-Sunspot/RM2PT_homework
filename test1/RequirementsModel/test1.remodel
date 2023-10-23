@@ -1,0 +1,457 @@
+UseCaseModel Test1 {
+
+	UC::userLogin definedBySSD(UserLoginSSD) relatedService(UserLoginService)
+	UC::signup definedBySSD(SignupSSD) relatedService(SignupService)
+	UC::submitQualifyApplication definedBySSD(SubmitQualifyApplicationSSD) relatedService(SubmitQualifyApplicationService)
+	UC::viewPromotionalProducts
+	UC::orderPromotionalProducts extend viewPromotionalProducts
+	UC::reviewUserApplication definedBySSD(ReviewUserApplicationSSD) relatedService(ReviewUserApplicationService)
+	UC::adminLogin definedBySSD(AdminLoginSSD) relatedService(AdminLoginService)
+	UC::addNewProduct definedBySSD(AddNewProductSSD) relatedService(AddNewProductService)
+	UC::viewSelfOrders definedBySSD(ViewSelfOrdersSSD) relatedService(ViewSelfOrdersService)
+
+	Actor User {
+		userLogin
+		signup
+		submitQualifyApplication
+	}
+
+	Actor QualifiedUser extends User {
+		viewPromotionalProducts
+		viewSelfOrders
+	}
+
+	Actor Admin {
+		reviewUserApplication
+		adminLogin
+		addNewProduct
+	}
+
+	Interaction UserLoginSSD {
+
+		[Participants: User UserLoginService]
+
+		CallMessage::UserLoginSSDCallMessage1(fillUsernameAndPassword UserLoginSSDCallMessage1SendingEnd -> UserLoginSSDExecution1StartEnd)
+		ReturnMessage::UserLoginSSDCallMessage1Return(UserLoginSSDExecution1FinishEnd -> UserLoginSSDCallMessage1ReturnReceivingEnd UserLoginSSDCallMessage1)
+		CallMessage::UserLoginSSDCallMessage3(callForLogin UserLoginSSDCallMessage3SendingEnd -> UserLoginSSDExecution2StartEnd)
+		ReturnMessage::UserLoginSSDCallMessage3Return(UserLoginSSDExecution2FinishEnd -> UserLoginSSDCallMessage3ReturnReceivingEnd UserLoginSSDCallMessage3)
+
+		Execution::UserLoginSSDExecution1(UserLoginService UserLoginSSDExecution1StartEnd UserLoginSSDExecution1FinishEnd)
+		Execution::UserLoginSSDExecution2(UserLoginService UserLoginSSDExecution2StartEnd UserLoginSSDExecution2FinishEnd)
+
+		MessageEnd::UserLoginSSDCallMessage3SendingEnd(User UserLoginSSDCallMessage3)
+		ExecutionEnd::UserLoginSSDExecution2StartEnd(UserLoginService UserLoginSSDExecution2)
+		ExecutionEnd::UserLoginSSDExecution2FinishEnd(UserLoginService UserLoginSSDExecution2)
+		MessageEnd::UserLoginSSDCallMessage3ReturnReceivingEnd(User UserLoginSSDCallMessage3Return)
+		MessageEnd::UserLoginSSDCallMessage1SendingEnd(User UserLoginSSDCallMessage1)
+		ExecutionEnd::UserLoginSSDExecution1StartEnd(UserLoginService UserLoginSSDExecution1)
+		ExecutionEnd::UserLoginSSDExecution1FinishEnd(UserLoginService UserLoginSSDExecution1)
+		MessageEnd::UserLoginSSDCallMessage1ReturnReceivingEnd(User UserLoginSSDCallMessage1Return)
+
+	}
+
+	Interaction SignupSSD {
+
+		[Participants: User SignupService]
+
+		CallMessage::SignupSSDCallMessage1(callForSignup SignupSSDCallMessage1SendingEnd -> SignupSSDExecution1StartEnd)
+		ReturnMessage::SignupSSDCallMessage1Return(SignupSSDExecution1FinishEnd -> SignupSSDCallMessage1ReturnReceivingEnd SignupSSDCallMessage1)
+		CallMessage::SignupSSDCallMessage3(fillAccountDetail SignupSSDCallMessage3SendingEnd -> SignupSSDExecution2StartEnd)
+		ReturnMessage::SignupSSDCallMessage3Return(SignupSSDExecution2FinishEnd -> SignupSSDCallMessage3ReturnReceivingEnd SignupSSDCallMessage3)
+
+		Execution::SignupSSDExecution1(SignupService SignupSSDExecution1StartEnd SignupSSDExecution1FinishEnd)
+		Execution::SignupSSDExecution2(SignupService SignupSSDExecution2StartEnd SignupSSDExecution2FinishEnd)
+
+		MessageEnd::SignupSSDCallMessage1SendingEnd(User SignupSSDCallMessage1)
+		ExecutionEnd::SignupSSDExecution1StartEnd(SignupService SignupSSDExecution1)
+		ExecutionEnd::SignupSSDExecution1FinishEnd(SignupService SignupSSDExecution1)
+		MessageEnd::SignupSSDCallMessage1ReturnReceivingEnd(User SignupSSDCallMessage1Return)
+		MessageEnd::SignupSSDCallMessage3SendingEnd(User SignupSSDCallMessage3)
+		ExecutionEnd::SignupSSDExecution2StartEnd(SignupService SignupSSDExecution2)
+		ExecutionEnd::SignupSSDExecution2FinishEnd(SignupService SignupSSDExecution2)
+		MessageEnd::SignupSSDCallMessage3ReturnReceivingEnd(User SignupSSDCallMessage3Return)
+
+	}
+
+	Interaction SubmitQualifyApplicationSSD {
+
+		[Participants: User SubmitQualifyApplicationService]
+
+		CallMessage::SubmitQualifyApplicationSSDCallMessage1(fillAdvancedProfile SubmitQualifyApplicationSSDCallMessage1SendingEnd -> SubmitQualifyApplicationSSDExecution1StartEnd)
+		ReturnMessage::SubmitQualifyApplicationSSDCallMessage1Return(SubmitQualifyApplicationSSDExecution1FinishEnd -> SubmitQualifyApplicationSSDCallMessage1ReturnReceivingEnd SubmitQualifyApplicationSSDCallMessage1)
+
+		Execution::SubmitQualifyApplicationSSDExecution1(SubmitQualifyApplicationService SubmitQualifyApplicationSSDExecution1StartEnd SubmitQualifyApplicationSSDExecution1FinishEnd)
+		Execution::AdminVerificationApplication(SubmitQualifyApplicationService SubmitQualifyApplicationSSDExecution2StartEnd SubmitQualifyApplicationSSDExecution2FinishEnd)
+
+		MessageEnd::SubmitQualifyApplicationSSDCallMessage1SendingEnd(User SubmitQualifyApplicationSSDCallMessage1)
+		ExecutionEnd::SubmitQualifyApplicationSSDExecution1StartEnd(SubmitQualifyApplicationService SubmitQualifyApplicationSSDExecution1)
+		ExecutionEnd::SubmitQualifyApplicationSSDExecution1FinishEnd(SubmitQualifyApplicationService SubmitQualifyApplicationSSDExecution1)
+		MessageEnd::SubmitQualifyApplicationSSDCallMessage1ReturnReceivingEnd(User SubmitQualifyApplicationSSDCallMessage1Return)
+		ExecutionEnd::SubmitQualifyApplicationSSDExecution2StartEnd(SubmitQualifyApplicationService AdminVerificationApplication)
+		ExecutionEnd::SubmitQualifyApplicationSSDExecution2FinishEnd(SubmitQualifyApplicationService AdminVerificationApplication)
+
+	}
+
+	Interaction AdminLoginSSD {
+
+		[Participants: Admin AdminLoginService]
+
+		CallMessage::AdminLoginSSDCallMessage1(callForLogin AdminLoginSSDCallMessage1SendingEnd -> AdminLoginSSDExecution1StartEnd)
+		ReturnMessage::AdminLoginSSDCallMessage1Return(AdminLoginSSDExecution1FinishEnd -> AdminLoginSSDCallMessage1ReturnReceivingEnd AdminLoginSSDCallMessage1)
+		CallMessage::AdminLoginSSDCallMessage3(fillAdminnameAndPassword AdminLoginSSDCallMessage3SendingEnd -> AdminLoginSSDExecution2StartEnd)
+		ReturnMessage::AdminLoginSSDCallMessage3Return(AdminLoginSSDExecution2FinishEnd -> AdminLoginSSDCallMessage3ReturnReceivingEnd AdminLoginSSDCallMessage3)
+
+		Execution::AdminLoginSSDExecution1(AdminLoginService AdminLoginSSDExecution1StartEnd AdminLoginSSDExecution1FinishEnd)
+		Execution::AdminLoginSSDExecution2(AdminLoginService AdminLoginSSDExecution2StartEnd AdminLoginSSDExecution2FinishEnd)
+
+		MessageEnd::AdminLoginSSDCallMessage1SendingEnd(Admin AdminLoginSSDCallMessage1)
+		ExecutionEnd::AdminLoginSSDExecution1StartEnd(AdminLoginService AdminLoginSSDExecution1)
+		ExecutionEnd::AdminLoginSSDExecution1FinishEnd(AdminLoginService AdminLoginSSDExecution1)
+		MessageEnd::AdminLoginSSDCallMessage1ReturnReceivingEnd(Admin AdminLoginSSDCallMessage1Return)
+		MessageEnd::AdminLoginSSDCallMessage3SendingEnd(Admin AdminLoginSSDCallMessage3)
+		ExecutionEnd::AdminLoginSSDExecution2StartEnd(AdminLoginService AdminLoginSSDExecution2)
+		ExecutionEnd::AdminLoginSSDExecution2FinishEnd(AdminLoginService AdminLoginSSDExecution2)
+		MessageEnd::AdminLoginSSDCallMessage3ReturnReceivingEnd(Admin AdminLoginSSDCallMessage3Return)
+
+	}
+
+	Interaction ReviewUserApplicationSSD {
+
+		[Participants: Admin ReviewUserApplicationService]
+
+		CallMessage::ReviewUserApplicationSSDCallMessage1(getUserApplicationsList ReviewUserApplicationSSDCallMessage1SendingEnd -> ReviewUserApplicationSSDExecution1StartEnd)
+		ReturnMessage::ReviewUserApplicationSSDCallMessage1Return(ReviewUserApplicationSSDExecution1FinishEnd -> ReviewUserApplicationSSDCallMessage1ReturnReceivingEnd ReviewUserApplicationSSDCallMessage1)
+		CallMessage::ReviewUserApplicationSSDCallMessage3(fillResultAndDesc ReviewUserApplicationSSDCallMessage3SendingEnd -> ReviewUserApplicationSSDExecution2StartEnd)
+		ReturnMessage::ReviewUserApplicationSSDCallMessage3Return(ReviewUserApplicationSSDExecution2FinishEnd -> ReviewUserApplicationSSDCallMessage3ReturnReceivingEnd ReviewUserApplicationSSDCallMessage3)
+
+		Execution::ReviewUserApplicationSSDExecution1(ReviewUserApplicationService ReviewUserApplicationSSDExecution1StartEnd ReviewUserApplicationSSDExecution1FinishEnd)
+		Execution::ReviewUserApplicationSSDExecution2(ReviewUserApplicationService ReviewUserApplicationSSDExecution2StartEnd ReviewUserApplicationSSDExecution2FinishEnd)
+
+		MessageEnd::ReviewUserApplicationSSDCallMessage1SendingEnd(Admin ReviewUserApplicationSSDCallMessage1)
+		ExecutionEnd::ReviewUserApplicationSSDExecution1StartEnd(ReviewUserApplicationService ReviewUserApplicationSSDExecution1)
+		ExecutionEnd::ReviewUserApplicationSSDExecution1FinishEnd(ReviewUserApplicationService ReviewUserApplicationSSDExecution1)
+		MessageEnd::ReviewUserApplicationSSDCallMessage1ReturnReceivingEnd(Admin ReviewUserApplicationSSDCallMessage1Return)
+		MessageEnd::ReviewUserApplicationSSDCallMessage3SendingEnd(Admin ReviewUserApplicationSSDCallMessage3)
+		ExecutionEnd::ReviewUserApplicationSSDExecution2StartEnd(ReviewUserApplicationService ReviewUserApplicationSSDExecution2)
+		ExecutionEnd::ReviewUserApplicationSSDExecution2FinishEnd(ReviewUserApplicationService ReviewUserApplicationSSDExecution2)
+		MessageEnd::ReviewUserApplicationSSDCallMessage3ReturnReceivingEnd(Admin ReviewUserApplicationSSDCallMessage3Return)
+
+	}
+
+	Interaction AddNewProductSSD {
+
+		[Participants: Admin AddNewProductService]
+
+		CallMessage::AddNewProductSSDCallMessage1(callToCreateProduct AddNewProductSSDCallMessage1SendingEnd -> AddNewProductSSDExecution1StartEnd)
+		ReturnMessage::AddNewProductSSDCallMessage1Return(AddNewProductSSDExecution1FinishEnd -> AddNewProductSSDCallMessage1ReturnReceivingEnd AddNewProductSSDCallMessage1)
+		CallMessage::AddNewProductSSDCallMessage3(addProduct AddNewProductSSDCallMessage3SendingEnd -> AddNewProductSSDExecution2StartEnd)
+		ReturnMessage::AddNewProductSSDCallMessage3Return(AddNewProductSSDExecution2FinishEnd -> AddNewProductSSDCallMessage3ReturnReceivingEnd AddNewProductSSDCallMessage3)
+		CallMessage::AddNewProductSSDCallMessage5(fillProductDetail AddNewProductSSDCallMessage5SendingEnd -> AddNewProductSSDExecution3StartEnd)
+		ReturnMessage::AddNewProductSSDCallMessage5Return(AddNewProductSSDExecution3FinishEnd -> AddNewProductSSDCallMessage5ReturnReceivingEnd AddNewProductSSDCallMessage5)
+
+		Execution::AddNewProductSSDExecution1(AddNewProductService AddNewProductSSDExecution1StartEnd AddNewProductSSDExecution1FinishEnd)
+		Execution::AddNewProductSSDExecution2(AddNewProductService AddNewProductSSDExecution2StartEnd AddNewProductSSDExecution2FinishEnd)
+		Execution::AddNewProductSSDExecution3(AddNewProductService AddNewProductSSDExecution3StartEnd AddNewProductSSDExecution3FinishEnd)
+
+		MessageEnd::AddNewProductSSDCallMessage1SendingEnd(Admin AddNewProductSSDCallMessage1)
+		ExecutionEnd::AddNewProductSSDExecution1StartEnd(AddNewProductService AddNewProductSSDExecution1)
+		ExecutionEnd::AddNewProductSSDExecution1FinishEnd(AddNewProductService AddNewProductSSDExecution1)
+		MessageEnd::AddNewProductSSDCallMessage1ReturnReceivingEnd(Admin AddNewProductSSDCallMessage1Return)
+		MessageEnd::AddNewProductSSDCallMessage3SendingEnd(Admin AddNewProductSSDCallMessage3)
+		ExecutionEnd::AddNewProductSSDExecution2StartEnd(AddNewProductService AddNewProductSSDExecution2)
+		ExecutionEnd::AddNewProductSSDExecution2FinishEnd(AddNewProductService AddNewProductSSDExecution2)
+		MessageEnd::AddNewProductSSDCallMessage3ReturnReceivingEnd(Admin AddNewProductSSDCallMessage3Return)
+		MessageEnd::AddNewProductSSDCallMessage5SendingEnd(Admin AddNewProductSSDCallMessage5)
+		ExecutionEnd::AddNewProductSSDExecution3StartEnd(AddNewProductService AddNewProductSSDExecution3)
+		ExecutionEnd::AddNewProductSSDExecution3FinishEnd(AddNewProductService AddNewProductSSDExecution3)
+		MessageEnd::AddNewProductSSDCallMessage5ReturnReceivingEnd(Admin AddNewProductSSDCallMessage5Return)
+
+	}
+
+	Interaction ViewSelfOrdersSSD {
+
+		[Participants: QualifiedUser ViewSelfOrdersService]
+
+		CallMessage::ViewSelfOrdersSSDCallMessage1(getOrderDetail ViewSelfOrdersSSDCallMessage1SendingEnd -> ViewSelfOrdersSSDExecution1StartEnd)
+		ReturnMessage::ViewSelfOrdersSSDCallMessage1Return(ViewSelfOrdersSSDExecution1FinishEnd -> ViewSelfOrdersSSDCallMessage1ReturnReceivingEnd ViewSelfOrdersSSDCallMessage1)
+
+		Execution::ViewSelfOrdersSSDExecution1(ViewSelfOrdersService ViewSelfOrdersSSDExecution1StartEnd ViewSelfOrdersSSDExecution1FinishEnd)
+
+		MessageEnd::ViewSelfOrdersSSDCallMessage1SendingEnd(QualifiedUser ViewSelfOrdersSSDCallMessage1)
+		ExecutionEnd::ViewSelfOrdersSSDExecution1StartEnd(ViewSelfOrdersService ViewSelfOrdersSSDExecution1)
+		ExecutionEnd::ViewSelfOrdersSSDExecution1FinishEnd(ViewSelfOrdersService ViewSelfOrdersSSDExecution1)
+		MessageEnd::ViewSelfOrdersSSDCallMessage1ReturnReceivingEnd(QualifiedUser ViewSelfOrdersSSDCallMessage1Return)
+
+	}
+
+	Service Test1System {
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+	Service UserLoginService {
+
+		[Operation]
+		fillUsernameAndPassword(username, password)
+		callForLogin(username)
+
+	}
+
+	Service SignupService {
+
+		[Operation]
+		callForSignup()
+		fillAccountDetail(username, password, phoneNumber, bankCardNumber)
+
+	}
+
+	Service SubmitQualifyApplicationService {
+
+		[Operation]
+		fillAdvancedProfile(fillAdvancedProfile)
+
+	}
+
+	Service AdminLoginService {
+
+		[Operation]
+		callForLogin(username)
+		fillAdminnameAndPassword(username, password)
+
+	}
+
+	Service ReviewUserApplicationService {
+
+		[Operation]
+		getUserApplicationsList(adminname)
+		fillResultAndDesc(results,comment)
+
+	}
+
+	Service AddNewProductService {
+
+		[Operation]
+		callToCreateProduct(adminname)
+		addProduct(productName)
+		fillProductDetail(productDetail)
+
+	}
+
+	Service ViewSelfOrdersService {
+
+		[Operation]
+		getOrderDetail(orderId)
+
+	}
+
+	Service PromotionSaleSystem {
+
+	} /* -------------------- Contracts ----------------------*/
+
+	Contract UserLoginService::fillUsernameAndPassword(username:String, password:String): Boolean {
+
+		precondition:
+			username.oclIsTypeOf(String) and
+			password.oclIsTypeOf(String) and
+			password <> "" and
+			username <> ""
+		postcondition:
+			true
+	}
+
+	Contract UserLoginService::callForLogin(username:String): Boolean {
+
+		precondition:
+			username.oclIsTypeOf(String) and
+			username <> ""
+		postcondition:
+			true
+	}
+
+	Contract AdminLoginService::fillAdminnameAndPassword(username:String, password:String): Boolean {
+
+		precondition:
+			adminname.oclIsTypeOf(String) and
+			password.oclIsTypeOf(String) and
+			password <> "" and
+			adminname <> ""
+		postcondition:
+			true
+	}
+
+	Contract AdminLoginService::callForLogin(username:String): Boolean {
+
+		precondition:
+			username.oclIsTypeOf(String) and
+			username <> ""
+		postcondition:
+			true
+	}
+
+	Contract SignupService::fillAccountDetail(username:String, password:String, phoneNumber:String, bankCardNumber:String): Boolean {
+
+		precondition:
+			adminname.oclIsTypeOf(String) and
+			password.oclIsTypeOf(String) and
+			phoneNumber.oclIsTypeOf(String) and
+			bankCardNumber.oclIsTypeOf(String) and
+			password <> "" and
+			adminname <> "" and
+			phoneNumber <> ""
+
+		postcondition:
+			true
+	}
+
+	Contract SubmitQualifyApplicationService::fillAdvancedProfile(fillAdvancedProfile : Profile): Boolean {
+
+		precondition:
+			fillAdvancedProfile.oclIsTypeOf(Profile) and
+			Profile <> NULL
+
+		postcondition:
+			true
+	}
+
+	Contract ReviewUserApplicationService::getUserApplicationsList(adminname:String) : Boolean {
+
+		precondition:
+			adminname.oclIsTypeOf(String) and
+			adminname <> ""
+
+		postcondition:
+			true
+	}
+
+	Contract ReviewUserApplicationService::fillResultAndDesc(results:Boolean, comment:String) : Boolean {
+
+		precondition:
+			comment.oclIsTypeOf(String) and
+			comment <> "" and
+			results.oclIsTypeOf(Boolean)
+
+		postcondition:
+			true
+	}
+
+	Contract AddNewProductService::callToCreateProduct(adminname:String) : Boolean {
+
+		precondition:
+			adminname.oclIsTypeOf(String) and
+			adminname <> ""
+
+		postcondition:
+			true
+	}
+
+	Contract AddNewProductService::addProduct(productName:String) : Boolean {
+
+		precondition:
+			productName.oclIsTypeOf(String) and
+			productName <> ""
+
+		postcondition:
+			true
+	}
+
+	Contract AddNewProductService::fillProductDetail(productDetail:Product) : Boolean {
+
+		precondition:
+			productDetail.Id <> 0 and
+			productDetail <> null
+
+		postcondition:
+			true
+	}
+
+	Contract ViewSelfOrdersService::getOrderDetail(orderId:Integer) : Order {
+
+		precondition:
+			orderId <> 0
+
+		postcondition:
+			true
+	}
+
+}
+
+DomainModel Test1 {
+
+	@AutoCRUD Entity Profile {
+		Name : String
+		Phone : String
+		IdCard : String
+		Sex : SexEnum[MAN|WOMAN|OTHER]
+		BankCard : String
+		WorkCompany : String
+		Address : String
+		Birthday : Date
+	}
+
+	Entity User {
+		Username : String
+		Paasword : String
+		IsQualify : Boolean
+		SignupDate : Date
+		UserId : Integer
+
+		[Refer]
+		UsertoProfile : Profile* Association
+		UsertoOrder : Order* Association
+	}
+
+	Entity QualifiedUser extends User {
+		QualifiedDate : Date
+
+		[Refer]
+		QualifiedUsertoApplication : Application* Association
+	}
+
+	Entity Admin {
+		AdminId : Integer
+		AdminName : String
+
+		[Refer]
+		AdmintoQualifiedUser : QualifiedUser* Association
+		AdmintoApplication : Application* Association
+		AdmintoSealPromotions : SealPromotions* Association
+	}
+
+	Entity Product {
+		Id : Integer
+		Name : String
+		CreateDate : Date
+		IsOnSale : Boolean
+		TotalCount : Integer
+		CurrentCount : Integer
+		OriginPrice : Real
+	}
+
+	Entity Order {
+		Id : Integer
+
+		[Refer]
+		OrdertoProduct : Product* Association
+	}
+
+	Entity Application {
+		Id : Integer
+		CreateDate : Date
+		State : String
+	}
+
+	Entity SealPromotions {
+		PromotionRate : Real
+		BeginSaleDate : Date
+		CreateDate : Date
+		EndSaleDate : Date
+
+		[Refer]
+		SealPromotionstoProduct : Product* Association
+	}
+
+}
+
