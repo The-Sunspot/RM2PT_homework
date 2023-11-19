@@ -16,7 +16,7 @@ SY2321101 曹胜华
 
 
 
-**## 模型规模**
+##  模型规模
 
 用例：Actor 3，用例9
 
@@ -25,3 +25,13 @@ SY2321101 曹胜华
 类图：类9
 
 自然语言建模：最外层uesr story 9，Flow中的User和System 10+
+
+## 架构设计截图
+
+![image-20231119235738043](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/image-20231119235738043.png)
+
+![image-20231119235723113](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/image-20231119235723113.png)
+
+## 面向对象类图截图
+
+![img](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/%40_Q1B%245GK%5BMR%7E%7BA3GXR%5D3ZC.png)
