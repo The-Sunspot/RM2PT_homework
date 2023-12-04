@@ -49,7 +49,7 @@ public class SignupServiceImpl implements SignupService, Serializable {
 		/* previous state in post-condition*/
  
 		/* check precondition */
-		if (adminname instanceof String && password instanceof String && phoneNumber instanceof String && bankCardNumber instanceof String && !password.equals("") && !adminname.equals("") && !phoneNumber.equals("")) 
+		if (username instanceof String && password instanceof String && phoneNumber instanceof String && bankCardNumber instanceof String && !password.equals("") && !username.equals("") && !phoneNumber.equals("")) 
 		{ 
 			/* Logic here */
 			
@@ -67,6 +67,7 @@ public class SignupServiceImpl implements SignupService, Serializable {
 			throw new PreconditionException();
 		}
 		//string parameters: [username, password, phoneNumber, bankCardNumber] 
+		return false;
 	}  
 	
 	 

@@ -49,7 +49,7 @@ public class SubmitQualifyApplicationServiceImpl implements SubmitQualifyApplica
 		/* previous state in post-condition*/
  
 		/* check precondition */
-		if (fillAdvancedProfile instanceof Profile && Profile != NULL) 
+		if (fillAdvancedProfile instanceof Profile ) 
 		{ 
 			/* Logic here */
 			
@@ -66,6 +66,7 @@ public class SubmitQualifyApplicationServiceImpl implements SubmitQualifyApplica
 		{
 			throw new PreconditionException();
 		}
+		return true;
 	}  
 	
 	 

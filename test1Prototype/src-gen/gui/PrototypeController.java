@@ -2407,22 +2407,22 @@ public class PrototypeController implements Initializable {
 		 operationPanels.put("fillAdminnameAndPassword", fillAdminnameAndPassword);
 		 
 		 // ==================== GridPane_callForLogin ====================
-		 GridPane callForLogin = new GridPane();
-		 callForLogin.setHgap(4);
-		 callForLogin.setVgap(6);
-		 callForLogin.setPadding(new Insets(8, 8, 8, 8));
+		 GridPane callForLogin1 = new GridPane();
+		 callForLogin1.setHgap(4);
+		 callForLogin1.setVgap(6);
+		 callForLogin1.setPadding(new Insets(8, 8, 8, 8));
 		 
-		 ObservableList<Node> callForLogin_content = callForLogin.getChildren();
-		 Label callForLogin_username_label = new Label("username:");
-		 callForLogin_username_label.setMinWidth(Region.USE_PREF_SIZE);
-		 callForLogin_content.add(callForLogin_username_label);
-		 GridPane.setConstraints(callForLogin_username_label, 0, 0);
+		 ObservableList<Node> callForLogin_content1 = callForLogin1.getChildren();
+		 Label callForLogin_username_label1 = new Label("username:");
+		 callForLogin_username_label1.setMinWidth(Region.USE_PREF_SIZE);
+		 callForLogin_content1.add(callForLogin_username_label1);
+		 GridPane.setConstraints(callForLogin_username_label1, 0, 0);
 		 
 		 callForLogin_username_t = new TextField();
-		 callForLogin_content.add(callForLogin_username_t);
+		 callForLogin_content1.add(callForLogin_username_t);
 		 callForLogin_username_t.setMinWidth(Region.USE_PREF_SIZE);
 		 GridPane.setConstraints(callForLogin_username_t, 1, 0);
-		 operationPanels.put("callForLogin", callForLogin);
+		 operationPanels.put("callForLogin", callForLogin1);
 		 
 		 // ==================== GridPane_fillAccountDetail ====================
 		 GridPane fillAccountDetail = new GridPane();
@@ -2694,7 +2694,7 @@ public class PrototypeController implements Initializable {
 			TreeItem<String> subTreeRoot_userLogin = new TreeItem<String>("userLogin");
 			subTreeRoot_userLogin.getChildren().addAll(Arrays.asList(			 		    
 					 	new TreeItem<String>("fillUsernameAndPassword"),
-					 	new TreeItem<String>("callForLogin")
+					 	new TreeItem<String>("callForUserLogin")
 				 		));	
 			TreeItem<String> subTreeRoot_signup = new TreeItem<String>("signup");
 			subTreeRoot_signup.getChildren().addAll(Arrays.asList(			 		    
@@ -2947,7 +2947,6 @@ public class PrototypeController implements Initializable {
 		case "fillUsernameAndPassword" : fillUsernameAndPassword(); break;
 		case "callForLogin" : callForLogin(); break;
 		case "fillAdminnameAndPassword" : fillAdminnameAndPassword(); break;
-		case "callForLogin" : callForLogin(); break;
 		case "fillAccountDetail" : fillAccountDetail(); break;
 		case "fillAdvancedProfile" : fillAdvancedProfile(); break;
 		case "getUserApplicationsList" : getUserApplicationsList(); break;
@@ -3103,53 +3102,53 @@ public class PrototypeController implements Initializable {
 				thirdpartyServiceUnSat();
 		}
 	}
-	public void callForLogin() {
-		
-		System.out.println("execute callForLogin");
-		String time = String.format("%1$tH:%1$tM:%1$tS", System.currentTimeMillis());
-		log.appendText(time + " -- execute operation: callForLogin in service: UserLoginService ");
-		
-		try {
-			//invoke op with parameters
-			//return value is primitive type, bind result to label.
-			String result = String.valueOf(userloginservice_service.callForLogin(
-			callForLogin_username_t.getText()
-			));	
-			Label l = new Label(result);
-			l.setPadding(new Insets(8, 8, 8, 8));
-			operation_return_pane.setContent(l);
-		    log.appendText(" -- success!\n");
-		    //set pre- and post-conditions text area color
-		    precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #7CFC00");
-		    postcondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #7CFC00");
-		    //contract evaluation result
-		    precondition_pane.setText("Precondition: True");
-		    postcondition_pane.setText("Postcondition: True");
-		    
-		    
-		} catch (PreconditionException e) {
-			log.appendText(" -- failed!\n");
-			precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");
-			precondition_pane.setText("Precondition: False");	
-			preconditionUnSat();
-			
-		} catch (PostconditionException e) {
-			log.appendText(" -- failed!\n");
-			postcondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");	
-			postcondition_pane.setText("Postcondition: False");
-			postconditionUnSat();
-			
-		} catch (NumberFormatException e) {
-			log.appendText(" -- failed!\n");
-			precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");
-			precondition_pane.setText("Precondition: False");	
-			preconditionUnSat();
-			
-		} catch (Exception e ) {		
-			if (e instanceof ThirdPartyServiceException)
-				thirdpartyServiceUnSat();
-		}
-	}
+//	public void callForLogin() {
+//		
+//		System.out.println("execute callForLogin");
+//		String time = String.format("%1$tH:%1$tM:%1$tS", System.currentTimeMillis());
+//		log.appendText(time + " -- execute operation: callForLogin in service: UserLoginService ");
+//		
+//		try {
+//			//invoke op with parameters
+//			//return value is primitive type, bind result to label.
+//			String result = String.valueOf(userloginservice_service.callForLogin(
+//			callForLogin_username_t.getText()
+//			));	
+//			Label l = new Label(result);
+//			l.setPadding(new Insets(8, 8, 8, 8));
+//			operation_return_pane.setContent(l);
+//		    log.appendText(" -- success!\n");
+//		    //set pre- and post-conditions text area color
+//		    precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #7CFC00");
+//		    postcondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #7CFC00");
+//		    //contract evaluation result
+//		    precondition_pane.setText("Precondition: True");
+//		    postcondition_pane.setText("Postcondition: True");
+//		    
+//		    
+//		} catch (PreconditionException e) {
+//			log.appendText(" -- failed!\n");
+//			precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");
+//			precondition_pane.setText("Precondition: False");	
+//			preconditionUnSat();
+//			
+//		} catch (PostconditionException e) {
+//			log.appendText(" -- failed!\n");
+//			postcondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");	
+//			postcondition_pane.setText("Postcondition: False");
+//			postconditionUnSat();
+//			
+//		} catch (NumberFormatException e) {
+//			log.appendText(" -- failed!\n");
+//			precondition.setStyle("-fx-background-color:#000000; -fx-control-inner-background: #FF0000");
+//			precondition_pane.setText("Precondition: False");	
+//			preconditionUnSat();
+//			
+//		} catch (Exception e ) {		
+//			if (e instanceof ThirdPartyServiceException)
+//				thirdpartyServiceUnSat();
+//		}
+//	}
 	public void fillAdminnameAndPassword() {
 		
 		System.out.println("execute fillAdminnameAndPassword");
@@ -3304,7 +3303,7 @@ public class PrototypeController implements Initializable {
 		try {
 			//invoke op with parameters
 			//return value is primitive type, bind result to label.
-			String result = String.valueOf(submitqualifyapplicationservice_service.fillAdvancedProfile(
+			String result = String.valueOf(submitqualifyapplicationservice_service.fillAdvancedProfile(null
 			));	
 			Label l = new Label(result);
 			l.setPadding(new Insets(8, 8, 8, 8));
@@ -3539,7 +3538,7 @@ public class PrototypeController implements Initializable {
 		try {
 			//invoke op with parameters
 			//return value is primitive type, bind result to label.
-			String result = String.valueOf(addnewproductservice_service.fillProductDetail(
+			String result = String.valueOf(addnewproductservice_service.fillProductDetail(null
 			));	
 			Label l = new Label(result);
 			l.setPadding(new Insets(8, 8, 8, 8));
@@ -3737,7 +3736,6 @@ public class PrototypeController implements Initializable {
 	TextField callForLogin_username_t;
 	TextField fillAdminnameAndPassword_username_t;
 	TextField fillAdminnameAndPassword_password_t;
-	TextField callForLogin_username_t;
 	TextField fillAccountDetail_username_t;
 	TextField fillAccountDetail_password_t;
 	TextField fillAccountDetail_phoneNumber_t;

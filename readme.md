@@ -14,7 +14,17 @@ SY2321101 曹胜华
 
 ![img](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/8Z9U3207%25IQK%5B7%7B%7EDEA%60W6M.png)
 
+![image-20231205020210522](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/202312050304059.png)
 
+## 自动生成的原型
+
+![image-20231205025216347](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/202312050306239.png)
+
+![image-20231205025154379](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/202312050306057.png)
+
+
+
+![image-20231205025110791](https://raw.githubusercontent.com/The-Sunspot/IMAGE/main/202312050302223.png)
 
 ##  模型规模
 

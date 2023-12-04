@@ -9,7 +9,6 @@ public interface UserLoginService {
 
 	/* all system operations of the use case*/
 	boolean fillUsernameAndPassword(String username, String password) throws PreconditionException, PostconditionException, ThirdPartyServiceException;
-	boolean callForLogin(String username) throws PreconditionException, PostconditionException, ThirdPartyServiceException;
 	
 	/* all get and set functions for temp property*/
 	

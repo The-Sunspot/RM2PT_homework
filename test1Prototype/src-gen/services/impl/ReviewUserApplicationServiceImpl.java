@@ -66,6 +66,7 @@ public class ReviewUserApplicationServiceImpl implements ReviewUserApplicationSe
 		{
 			throw new PreconditionException();
 		}
+		return true;
 		//string parameters: [adminname] 
 	}  
 	
@@ -77,7 +78,7 @@ public class ReviewUserApplicationServiceImpl implements ReviewUserApplicationSe
 		/* previous state in post-condition*/
  
 		/* check precondition */
-		if (comment instanceof String && !comment.equals("") && results instanceof boolean) 
+		if (comment instanceof String && !comment.equals("") ) 
 		{ 
 			/* Logic here */
 			
@@ -95,6 +96,7 @@ public class ReviewUserApplicationServiceImpl implements ReviewUserApplicationSe
 			throw new PreconditionException();
 		}
 		//string parameters: [comment] 
+		return results;
 	}  
 	
 	 

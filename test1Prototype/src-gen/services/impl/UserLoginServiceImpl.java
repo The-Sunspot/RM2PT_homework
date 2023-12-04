@@ -67,38 +67,11 @@ public class UserLoginServiceImpl implements UserLoginService, Serializable {
 			throw new PreconditionException();
 		}
 		//string parameters: [username, password] 
+		return true;
 	}  
 	
 	 
-	@SuppressWarnings("unchecked")
-	public boolean callForLogin(String username) throws PreconditionException, PostconditionException, ThirdPartyServiceException {
 		
-		
-		/* previous state in post-condition*/
- 
-		/* check precondition */
-		if (username instanceof String && !username.equals("")) 
-		{ 
-			/* Logic here */
-			
-			
-			refresh();
-			// post-condition checking
-			if (!(true)) {
-				throw new PostconditionException();
-			}
-			
-		
-		}
-		else
-		{
-			throw new PreconditionException();
-		}
-		//string parameters: [username] 
-	}  
-	
-	 
-	
 	
 	
 	/* temp property for controller */

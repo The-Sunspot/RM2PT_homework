@@ -65,6 +65,7 @@ public class ViewSelfOrdersServiceImpl implements ViewSelfOrdersService, Seriali
 		{
 			throw new PreconditionException();
 		}
+		return new Order();
 	}  
 	
 	 

@@ -66,6 +66,7 @@ public class AdminLoginServiceImpl implements AdminLoginService, Serializable {
 		{
 			throw new PreconditionException();
 		}
+		return true;
 		//string parameters: [username] 
 	}  
 	
@@ -77,7 +78,7 @@ public class AdminLoginServiceImpl implements AdminLoginService, Serializable {
 		/* previous state in post-condition*/
  
 		/* check precondition */
-		if (adminname instanceof String && password instanceof String && !password.equals("") && !adminname.equals("")) 
+		if (username instanceof String && password instanceof String && !password.equals("") && !username.equals("")) 
 		{ 
 			/* Logic here */
 			
@@ -95,6 +96,7 @@ public class AdminLoginServiceImpl implements AdminLoginService, Serializable {
 			throw new PreconditionException();
 		}
 		//string parameters: [username, password] 
+		return false;
 	}  
 	
 	 

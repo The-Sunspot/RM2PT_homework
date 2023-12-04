@@ -33,7 +33,7 @@ UseCaseModel Test1 {
 
 		CallMessage::UserLoginSSDCallMessage1(fillUsernameAndPassword UserLoginSSDCallMessage1SendingEnd -> UserLoginSSDExecution1StartEnd)
 		ReturnMessage::UserLoginSSDCallMessage1Return(UserLoginSSDExecution1FinishEnd -> UserLoginSSDCallMessage1ReturnReceivingEnd UserLoginSSDCallMessage1)
-		CallMessage::UserLoginSSDCallMessage3(callForLogin UserLoginSSDCallMessage3SendingEnd -> UserLoginSSDExecution2StartEnd)
+		CallMessage::UserLoginSSDCallMessage3(callForUserLogin UserLoginSSDCallMessage3SendingEnd -> UserLoginSSDExecution2StartEnd)
 		ReturnMessage::UserLoginSSDCallMessage3Return(UserLoginSSDExecution2FinishEnd -> UserLoginSSDCallMessage3ReturnReceivingEnd UserLoginSSDCallMessage3)
 
 		Execution::UserLoginSSDExecution1(UserLoginService UserLoginSSDExecution1StartEnd UserLoginSSDExecution1FinishEnd)
@@ -96,7 +96,7 @@ UseCaseModel Test1 {
 
 		[Participants: Admin AdminLoginService]
 
-		CallMessage::AdminLoginSSDCallMessage1(callForLogin AdminLoginSSDCallMessage1SendingEnd -> AdminLoginSSDExecution1StartEnd)
+		CallMessage::AdminLoginSSDCallMessage1(callForUserLogin AdminLoginSSDCallMessage1SendingEnd -> AdminLoginSSDExecution1StartEnd)
 		ReturnMessage::AdminLoginSSDCallMessage1Return(AdminLoginSSDExecution1FinishEnd -> AdminLoginSSDCallMessage1ReturnReceivingEnd AdminLoginSSDCallMessage1)
 		CallMessage::AdminLoginSSDCallMessage3(fillAdminnameAndPassword AdminLoginSSDCallMessage3SendingEnd -> AdminLoginSSDExecution2StartEnd)
 		ReturnMessage::AdminLoginSSDCallMessage3Return(AdminLoginSSDExecution2FinishEnd -> AdminLoginSSDCallMessage3ReturnReceivingEnd AdminLoginSSDCallMessage3)
@@ -196,7 +196,7 @@ UseCaseModel Test1 {
 
 		[Operation]
 		fillUsernameAndPassword(username, password)
-		callForLogin(username)
+		callForUserLogin(username)
 
 	}
 

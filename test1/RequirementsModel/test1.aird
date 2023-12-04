@@ -12,7 +12,7 @@
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='Use%20Case%20Diagram']"/>
         <target xmi:type="rEMODEL:UseCaseModel" href="test1.remodel#//@UseCaseModel"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DeqYcHGYEe69-uaRe0s_Gw" name="UserLoginSSD" repPath="#_DepxYHGYEe69-uaRe0s_Gw" changeId="071391ab-f86a-4fac-9e5c-4fe2573f9ee4">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DeqYcHGYEe69-uaRe0s_Gw" name="UserLoginSSD" repPath="#_DepxYHGYEe69-uaRe0s_Gw" changeId="83224b1f-c1d0-4252-9198-883f3e23e714">
         <description xmi:type="description_2:SequenceDiagramDescription" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='SequenceDiagram']"/>
         <target xmi:type="rEMODEL:Interaction" href="test1.remodel#//@UseCaseModel/@interaction.0"/>
       </ownedRepresentationDescriptors>
@@ -1632,7 +1632,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_2:ReturnMessageMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@edgeMappings[name='ReturnMessage']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_kLnW1HGYEe69-uaRe0s_Gw" name="callForLogin (username)" sourceNode="_Deq_hXGYEe69-uaRe0s_Gw" targetNode="_Deq_iHGYEe69-uaRe0s_Gw">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_kLnW1HGYEe69-uaRe0s_Gw" name="callForUserLogin (username)" sourceNode="_Deq_hXGYEe69-uaRe0s_Gw" targetNode="_Deq_iHGYEe69-uaRe0s_Gw">
       <target xmi:type="rEMODEL:CallMessage" href="test1.remodel#//@UseCaseModel/@interaction.0/@messages.2"/>
       <semanticElements xmi:type="rEMODEL:CallMessage" href="test1.remodel#//@UseCaseModel/@interaction.0/@messages.2"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_kLnW2XGYEe69-uaRe0s_Gw" y="125" height="0"/>
@@ -2282,7 +2282,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_2:InstanceRoleMapping" href="platform:/plugin/net.mydreamy.requirementmodel.design/description/requirementmodel.odesign#//@ownedViewpoints[name='RequirementModel']/@ownedRepresentations[name='SequenceDiagram']/@defaultLayer/@nodeMappings[name='Participant']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Yp78AHGbEe69-uaRe0s_Gw" name="callForLogin (username)" sourceNode="_WNVWtHGbEe69-uaRe0s_Gw" targetNode="_WNVWt3GbEe69-uaRe0s_Gw">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Yp78AHGbEe69-uaRe0s_Gw" name="callForUserLogin (username)" sourceNode="_WNVWtHGbEe69-uaRe0s_Gw" targetNode="_WNVWt3GbEe69-uaRe0s_Gw">
       <target xmi:type="rEMODEL:CallMessage" href="test1.remodel#//@UseCaseModel/@interaction.3/@messages.0"/>
       <semanticElements xmi:type="rEMODEL:CallMessage" href="test1.remodel#//@UseCaseModel/@interaction.3/@messages.0"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_Yp8jEnGbEe69-uaRe0s_Gw" y="146" height="0"/>

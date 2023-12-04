@@ -66,6 +66,7 @@ public class AddNewProductServiceImpl implements AddNewProductService, Serializa
 		{
 			throw new PreconditionException();
 		}
+		return true;
 		//string parameters: [adminname] 
 	}  
 	
@@ -95,6 +96,7 @@ public class AddNewProductServiceImpl implements AddNewProductService, Serializa
 			throw new PreconditionException();
 		}
 		//string parameters: [productName] 
+		return true;
 	}  
 	
 	 
@@ -122,6 +124,7 @@ public class AddNewProductServiceImpl implements AddNewProductService, Serializa
 		{
 			throw new PreconditionException();
 		}
+		return true;
 	}  
 	
 	 
